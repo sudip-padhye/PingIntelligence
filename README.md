@@ -1,3 +1,5 @@
+# PingIntelligence
+
 <p align="center">
   <img width="280" height="200"
   src="Design_Documents/Logo/logo.JPG">
@@ -13,8 +15,10 @@
 
 
 ## Napkin Diagram
+Ping Intelligence is a personal photo sharing and backup application which will enable to users and its groups to store memories.
 
 <div style="text-align: justify"> Ping Intelligence is a personal photo sharing and backup application which will enable to users and its groups to store memories.
+
 User has the ability to organize their photos into albums.
 The user can upload photos and store it in personalized albums. User can also share these albums with other users.
 The user can keep albums as private as a personal backup option.
@@ -23,47 +27,70 @@ The filter feature enables the user just view images which meet a certain criter
 
 ![Napkin](Design_Documents/napkin_diagram.PNG)
 
+
 ## Architecture Diagram
 ![Architecture](Design_Documents/architecture.png)
 
 ## How to use?
-> git clone "https://github.com/eayoungs/react-django-login-example.git"
+> git clone --recurse-submodules git@github.com:airavata-courses/PingIntelligence.git
 
-#### Open a Terminal for Front-end
-
-> cd react-django-login\frontend
+### Front-End (React JS)
+> cd front-end/
 
 > npm install
 
 > npm start
 
-#### Open a Terminal for Back-end
+> Note: Current configuration does not work for registering new user. Login can be made using username: user & password: abcd.
 
-> cd react-django-login\backend
 
-> python -m venv backend_env
+### Gateway API Service & User Management Service (Spring Boot)
+> cd restful-web-services/
 
-> backend_env\Scripts\activate.bat
+> Import As "Existing Maven Project" into the IDE.
 
-> install django-debug-toolbar
+> Update the Maven project.
 
-> pip install django-cors-headers
+> Go to pom.xml > right-click > run > maven Build> Enter Goals: clean install > run
 
-> pip install djangorestframework
+> Once Build is Successful go to "RestfulWebServicesApplication.java" > right-click > Run > Run as Spring Boot Application.
 
-> pip install djoser
 
-> pip install django-rest-swagger
+### Metadata Extraction API Service (Spring Boot)
+> cd metadata_extraction_microservice/
 
-> pip install djangorestframework-jwt
+> Import As "Existing Maven Project" into the IDE.
 
-> python manage.py makemigrations custom_user
+> Update the Maven project.
 
-> python manage.py migrate
+> Go to pom.xml > right-click > run > maven Build> Enter Goals: clean install > run
 
-> python manage.py createsuperuser
+> Once Build is Successful go to "App.java" > right-click > Run > Run as Spring Boot Application.
 
+
+
+### Upload Image Microservice (Django)
+> cd upload-image-microservice
+
+> Open Command prompt in this directory and create virtual environment
+> python -m venv venv
+> .\venv\Scripts\activate
+
+> Install required libraries from requirements.txt
+> pip install -r requirements.txt
+
+> Create your Google Drive API credentials.json file (https://developers.google.com/drive/api/v3/quickstart/python)
+> save the credentials.json file in upload-image-microservice\uploadImage\google-drive-upload folder
+
+> Start the microservice
+> go to uploadImage folder
 > python manage.py runserver
+
+Note: First time when you run the drive-upload file, Google account will need to be verified in browser
+
+
+
+
 
 
 ## Team Introduction
