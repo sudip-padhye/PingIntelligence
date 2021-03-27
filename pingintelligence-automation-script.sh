@@ -3,7 +3,7 @@ pip3 install python-openstackclient &&
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - &&
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" &&
 sudo apt-get update && sudo apt-get install terraform &&
-export CLUSTER=pingintelligence &&
+export CLUSTER=kubejetstream &&
 mv ./cluster.tfvars jetstream_kubespray/inventory/kubejetstream/ &&
 mv ./k8s-cluster.yml jetstream_kubespray/inventory/kubejetstream/group_vars/k8s-cluster &&
 cd jetstream_kubespray/inventory/kubejetstream &&
