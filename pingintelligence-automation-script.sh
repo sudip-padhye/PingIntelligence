@@ -12,7 +12,10 @@ bash terraform_init.sh &&
 bash terraform_apply.sh &&
 export IP=149.165.156.145 &&
 cd ../../ &&
-pip install -r requirements.txt &&
+sudo apt update &&
+sudo apt install python3-pip &&
+pip3 --version &&
+pip3 install -r requirements.txt &&
 eval $(ssh-agent -s) &&
 ssh-add ~/.ssh/id_rsa &&
 ansible -i inventory/kubejetstream/hosts -m ping all &&
