@@ -22,11 +22,10 @@ sleep 60 &&
 ansible -i inventory/kubejetstream/hosts -m ping all &&
 sleep 300 &&
 bash k8s_install.sh &&
-ssh-keygen -f "~/.ssh/known_hosts" -R "149.165.156.145" &&
-ssh ubuntu@$IP &&
-sudo su &&
+ssh-keygen -f ~/.ssh/known_hosts -R "149.165.156.145" &&
+ssh ubuntu@$IP "sudo su &&
 git clone https://github.com/airavata-courses/PingIntelligence.git &&
 cd PingIntelligence &&
 git checkout kubernetes_files &&
 kubectl apply -f ../PingIntelligence/ &&
-kubectl get pods
+kubectl get pods"
