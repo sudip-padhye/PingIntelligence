@@ -20,7 +20,7 @@ ssh-add ~/.ssh/id_rsa &&
 cp inventory/kubejetstream/hosts inventory/ &&
 sleep 60 &&
 ansible -i inventory/kubejetstream/hosts -m ping all &&
-sleep 60 &&
+sleep 300 &&
 bash k8s_install.sh &&
 ssh-keygen -f "~/.ssh/known_hosts" -R "149.165.156.145" &&
 ssh ubuntu@$IP &&
