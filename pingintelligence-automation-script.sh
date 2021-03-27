@@ -5,6 +5,7 @@ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(l
 sudo apt-get update && sudo apt-get install terraform &&
 export CLUSTER=pingintelligence &&
 mv ./cluster.tfvars jetstream_kubespray/inventory/kubejetstream/ &&
+mv ./k8s-cluster.yml jetstream_kubespray/inventory/kubejetstream/group_vars/k8s-cluster &&
 cd jetstream_kubespray/inventory/kubejetstream &&
 bash terraform_init.sh &&
 bash terraform_apply.sh &&
