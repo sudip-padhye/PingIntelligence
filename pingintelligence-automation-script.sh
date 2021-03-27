@@ -5,8 +5,6 @@ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(l
 sudo apt-get update && sudo apt-get install terraform &&
 export CLUSTER=pingintelligence &&
 mv ./cluster.tfvars jetstream_kubespray/inventory/kubejetstream/ &&
-mv ./pingintelligence-automation-script.sh jetstream_kubespray/ &&
-cp jetstream_kubespray/inventory/kubejetstream/hosts jetstream_kubespray/inventory/ &&
 cd jetstream_kubespray/inventory/kubejetstream &&
 bash terraform_init.sh &&
 bash terraform_apply.sh &&
@@ -18,6 +16,7 @@ pip3 --version &&
 pip3 install -r requirements.txt &&
 eval $(ssh-agent -s) &&
 ssh-add ~/.ssh/id_rsa &&
+cp jetstream_kubespray/inventory/kubejetstream/hosts jetstream_kubespray/inventory/ &&
 ansible -i inventory/kubejetstream/hosts -m ping all &&
 bash k8s_install.sh &&
 ssh-keygen -f "~/.ssh/known_hosts" -R "149.165.156.145" &&
