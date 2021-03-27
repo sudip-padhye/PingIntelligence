@@ -16,8 +16,10 @@ pip3 --version &&
 pip3 install -r requirements.txt &&
 eval $(ssh-agent -s) &&
 ssh-add ~/.ssh/id_rsa &&
-cp jetstream_kubespray/inventory/kubejetstream/hosts jetstream_kubespray/inventory/ &&
+cp inventory/kubejetstream/hosts inventory/ &&
+sleep 60 &&
 ansible -i inventory/kubejetstream/hosts -m ping all &&
+sleep 60 &&
 bash k8s_install.sh &&
 ssh-keygen -f "~/.ssh/known_hosts" -R "149.165.156.145" &&
 ssh ubuntu@$IP &&
