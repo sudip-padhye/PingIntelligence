@@ -20,6 +20,7 @@ eval $(ssh-agent -s) &&
 ssh-add ~/.ssh/id_rsa &&
 ansible -i inventory/kubejetstream/hosts -m ping all &&
 bash k8s_install.sh &&
+ssh-keygen -f "~/.ssh/known_hosts" -R "149.165.156.145" &&
 ssh ubuntu@$IP &&
 sudo su &&
 git clone https://github.com/airavata-courses/PingIntelligence.git &&
