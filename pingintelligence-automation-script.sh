@@ -22,5 +22,4 @@ sleep 60 &&
 ansible -i inventory/kubejetstream/hosts -m ping all &&
 sleep 300 &&
 bash k8s_install.sh &&
-#ssh-keygen -f ~/.ssh/known_hosts -R "149.165.156.145" &&
-ssh ubuntu@$IP
+ssh -o StrictHostKeyChecking=no ubuntu@$IP
